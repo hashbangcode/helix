@@ -18,7 +18,7 @@ $apiFunctions = [
 
 if (in_array($_SERVER["PATH_INFO"], $apiFunctions)) {
   // Proxy the API call to the Helix.
-  $url = 'http://'. . $helixIp . $_SERVER['REQUEST_URI'];
+  $url = 'http://' . $helixIp . $_SERVER['REQUEST_URI'];
   $ch = curl_init();
   $user_agent = "Mozilla/4.0";
   curl_setopt($ch, CURLOPT_URL, $url);
