@@ -10,10 +10,10 @@ $apiFunctions = [
   '/playFile',
   '/Event',
   '/getTracks',
+  '/playTrack',
   '/setVolume',
   '/pickZone',
   '/getGenericSettings',
-  '/ssids',
 ];
 
 if (in_array($_SERVER["PATH_INFO"], $apiFunctions)) {
