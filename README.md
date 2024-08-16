@@ -10,6 +10,22 @@ the same control of the API as the built-in applicatiom.
 This project is intended to showcase changes or improvements to the Helix web
 application,
 
+## PHP Router
+
+If you have PHP installed you can use a simple PHP router to act as the proxy
+between your browser and the Helix.
+
+To use the PHP router run the following.
+
+```
+php -S localhost:8000 router.php
+```
+
+Load a web browser with the address http://localhost:8000 and you will see the 
+Helix web app.
+
+You can use the ./php_runme.sh bash script to run this command.
+
 ## API Docs
 
 Here are the available endpoints for the Brennan Helix.
@@ -21,7 +37,7 @@ Always encode spaces into "%20" in your requests.
 - **Path**: `/getStatus`
 - **Arguments**: None.
 
-Gets the current status of the player, firmware version, ip address, 0.101 and
+Gets the current status of the player, firmware version, ip address, zones and
 track information.
 
 Example request:
