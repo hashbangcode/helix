@@ -1,7 +1,8 @@
 <?php
+declare(strict_types=1);
 
 // Put your Helix IP address here.
-$helixIp = '192.168.x.x';
+$helixIp = '192.168.178.173';
 
 // This is a list of Helix API functions that will be proxied to the Helix.
 $apiFunctions = [
@@ -30,6 +31,11 @@ if (in_array($_SERVER["PATH_INFO"], $apiFunctions)) {
   $contents = curl_exec($ch);
   curl_close($ch);
   print $contents;
+}
+elseif ('/favicon.ico' === $_SERVER["REQUEST_URI"]) {
+  // Return favicon.
+  header("Content-type: image/x-icon");
+  readfile('favicon.ico');
 }
 else {
   // Return the index.html page.
