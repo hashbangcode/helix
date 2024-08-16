@@ -152,7 +152,7 @@ all files in that directory are played in order.
 
 Request:
 
-```json
+```
 curl "http://192.168.0.101/playFile?path=/sdcard/music/Bones%20of%20Minerva/Embers/01%20Forest.wav"
 ```
 
