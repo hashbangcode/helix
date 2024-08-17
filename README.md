@@ -3,28 +3,48 @@
 **Note**: This project is not owned or endorsed by Brennan in any way.
 
 A standalone proxy system that can connect to your Brennan Helix and provides
-the same control of the API as the built-in applicatiom.
+the same control of the API as the built-in application.
 
 ## Why?
 
 This project is intended to showcase changes or improvements to the Helix web
 application,
 
-## PHP Router
+## PHP Proxy
 
 If you have PHP installed you can use a simple PHP router to act as the proxy
 between your browser and the Helix.
 
-To use the PHP router run the following.
+To use the PHP proxy run the following, replacing the IP address with the IP 
+address that your Helix has.
 
 ```
-php -S localhost:8000 router.php
+HELIXIP=192.168.0.101 php -S localhost:8000 router.php
 ```
+
+This proxy has been tested with PHP version 8.3.
 
 Load a web browser with the address http://localhost:8000 and you will see the 
-Helix web app.
+Helix web app. All the traffic to the helix is proxied through this server
+so that a custom web front end can be served.
 
-You can use the ./php_runme.sh bash script to run this command.
+## JavaScript Proxy
+
+If you have Node.js installed you can use a simple JavaScript script to act as
+the proxy  between your browser and the Helix.
+
+To use the JavaScript proxy run the following, replacing the IP address with
+the IP address that your Helix has.
+
+```
+HELIXIP=192.168.0.101 node server.js
+```
+
+This proxy has been tested with Node.js version 18.15.0.
+
+Load a web browser with the address http://localhost:8000 and you will see the
+Helix web app. All the traffic to the helix is proxied through this server
+so that a custom web front end can be served.
 
 ## API Docs
 
