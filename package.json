@@ -1,0 +1,13 @@
+{
+  "name": "brennan",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "**Note**: This project is not owned or endorsed by Brennan in any way.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
