@@ -1,8 +1,8 @@
 <?php
 declare(strict_types=1);
 
-// Put your Helix IP address here.
-$helixIp = '192.168.178.173';
+// Get the helix IP from the environment variables.
+$helixIp = getenv('HELIXIP');
 
 // This is a list of Helix API functions that will be proxied to the Helix.
 $apiFunctions = [
@@ -17,7 +17,7 @@ $apiFunctions = [
   '/getGenericSettings',
 ];
 
-if (in_array($_SERVER["PATH_INFO"], $apiFunctions)) {
+if (isset($_SERVER["PATH_INFO"]) && in_array($_SERVER["PATH_INFO"], $apiFunctions)) {
   // Proxy the API call to the Helix.
   $url = 'http://' . $helixIp . $_SERVER['REQUEST_URI'];
   $ch = curl_init();
