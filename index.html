@@ -1,40 +1,31 @@
-
 <!DOCTYPE html>
+<html>
 <head>
-    <title> Brennan Helix </title>
+    <title>Brennan Helix</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
-<html>
-<!----------------------------CSS---------------------------->
 <style>
 
     :root {
-        /*
-            --background: #002b36;
-            --button: #483d61;
-            --buttonHover: #5c4718;
-        */
         --background: #545e73;
         --darkShadow: #292e38;
         --lightShadow: #545e73;
-
         --button: #242936;
         --buttonHover: #37425c;
-
         --panel: #3e4656;
-
     }
-
 
     body {
         font-family: sans-serif;
         color: #FFF;
         background-color: var(--background);
     }
+
     .container {
         max-width: 500px;
         max-height: 700px;
     }
+
     .blockStyle {
         display: block;
         width: 100%;
@@ -43,6 +34,7 @@
         border: none;
         box-sizing: border-box;
     }
+
     .blockButton {
         display: block;
         width: 100%;
@@ -54,29 +46,37 @@
         cursor: pointer;
         text-align: center;
     }
+
     .blockButton:hover {
         background-color: var(--buttonHover);
     }
+
     #start {
         background-color: DarkGreen;
     }
+
     #stop {
         background-color: DarkRed;
     }
+
     .programming {
         background-color: DarkRed;
     }
+
     .programming:hover {
         background-color: DarkRed !important;
     }
+
     .title {
         color: #FFF;
         font-size: 12px;
         margin-left: 5px;
     }
+
     p {
         margin: 8px 0;
     }
+
     .card {
         background-color: var(--panel);
         padding: 8px 16px;
@@ -96,6 +96,7 @@
         border-bottom: 14px solid #CCC;
         cursor: pointer;
     }
+
     .triangle-down {
         width: 0;
         height: 0;
@@ -125,7 +126,6 @@
     .buttonBox {
         display: flex;
     }
-
 
 
     .tabButton {
@@ -175,7 +175,6 @@
     }
 
 
-
     .smallButton {
         color: #FFF;
         background-color: var(--button);
@@ -201,7 +200,7 @@
         padding: 5px;
     }
 
-    smallButton:hover {
+    .smallButton:hover {
         background-color: var(--buttonHover);
     }
 
@@ -216,16 +215,10 @@
         position: absolute;
         background-color: var(--button);
         min-width: 200px;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         padding: 12px 0px;
         z-index: 1;
     }
-
-    /*
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    */
 
     .dropdown-content div {
         padding: 12px 16px;
@@ -263,9 +256,8 @@
     .upButton {
         margin: 5px;
     }
-
 </style>
-<body  onclick="zoneOut()">
+<body onclick="zoneOut()">
 <div class="container">
 
     <div class="buttonBox">
@@ -276,10 +268,12 @@
     </div>
 
     <div class="ends status">
-        <div><span id="source"><span class="muted">Source:</span></span> <span id="playing">Paused</span></div>
+        <div><span id="source"><span class="muted">Source:</span></span> <span
+                id="playing">Paused</span></div>
         <div class="dropdown">
-            <span id="zone" onclick="clickZone(event)"><span class="muted">Zone:</span> Wired</span>
-            <div id="zones"  class="dropdown-content"></div>
+            <span id="zone" onclick="clickZone(event)"><span
+                    class="muted">Zone:</span> Wired</span>
+            <div id="zones" class="dropdown-content"></div>
         </div>
     </div>
 
@@ -289,27 +283,28 @@
         <p id="artist">Artist:</p>
         <p id="album">Album:</p>
         <p id="track">Track:</p>
-
-
     </div>
 
     <div class="panel" id="panel2" style="display: none">
         <p>CD Tracks</p>
         <div class="tracks">
-            <table id="tracks" >
+            <table id="tracks">
             </table>
         </div>
     </div>
 
     <div class="panel" id="panel3" style="display: none">
         <p>SD Card</p>
-        <table><tr>
-            <td><span class="smallButton" onclick="drillUp ()">&#x25B2;</span></td>
-            <td><span id="path" onclick="drillUp ()">/sdcard/</span></td>
-        </tr></table>
+        <table>
+            <tr>
+                <td><span class="smallButton"
+                          onclick="drillUp ()">&#x25B2;</span></td>
+                <td><span id="path" onclick="drillUp ()">/sdcard/</span></td>
+            </tr>
+        </table>
 
         <div class="tracks">
-            <table id="files" >
+            <table id="files">
             </table>
         </div>
     </div>
@@ -318,7 +313,7 @@
         <p>Settings</p>
         <div class="card">
             <p>
-                <span id="network" class="title" >Current Network</span>
+                <span id="network" class="title">Current Network</span>
             </p>
         </div>
         <div class="card">
@@ -328,137 +323,20 @@
         </div>
     </div>
 
-
-
-
-    <div class = "transportButtons">
+    <div class="transportButtons">
         <div class="volumeContainer">
-            <input type="range" min="1" max="100" class="slider" id="volumeSlider">
+            <input type="range" min="1" max="100" class="slider"
+                   id="volumeSlider">
         </div>
-        <div class = "buttonBox">
+        <div class="buttonBox">
             <button class="tabButton" onclick="command('Event?key=eject')">Eject</button>
             <button class="tabButton" onclick="command('Event?key=back')">Back</button>
             <button class="tabButton" onclick="command('Event?key=play')">Play/Stop</button>
             <button class="tabButton" onclick="command('Event?key=next')">Next</button>
         </div>
     </div>
-
-
-
-
-
-
 </div>
 <script>
-
-    var cw = 430;
-    var ch = 100;
-
-    //-------------------------------------------------------
-
-
-    function command(cmd)
-    {
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function()
-        {
-            if(this.readyState == 4 && this.status == 200)
-            {
-//          var x = document.getElementById("myDIV");
-//          x.innerHTML =
-//          this.responseText;
-            }
-        };
-        req.open("GET", cmd, true);
-        req.send();
-    }
-
-    function createElementFromHTML (string){
-        var div = document.createElement('div');
-        div.innerHTML = string;
-        return div.firstChild;
-    }
-
-    function getSsids()
-    {
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function()
-        {
-            if(this.readyState == 4 && this.status == 200)
-            {
-//          console.log (this.responseText);
-                ssids = JSON.parse (this.responseText).names;
-                console.log ("Got "+ssids.length+" ssids");
-                var sel = document.getElementById("ssids");
-                removeChildren (sel);
-                for (n=0;n<ssids.length;n++){
-                    var option = createElementFromHTML ('<option value="'+ssids[n]+'">'+ssids[n]+'</option>');
-                    sel.appendChild (option);
-                };
-            };
-        };
-        req.open("GET","ssids", true);
-        req.send();
-    }
-
-
-    /*
-        function getZones()
-        {
-          var req = new XMLHttpRequest();
-          req.onreadystatechange = function()
-          {
-            if(this.readyState == 4 && this.status == 200)
-            {
-              console.log (this.responseText);
-
-              zones = JSON.parse (this.responseText).names;
-              console.log ("Got "+zones.length+" zones");
-              var sel = document.getElementById("zones");
-              removeChildren (sel);
-              for (n=0;n<zones.length;n++){
-                var option = createElementFromHTML ('<option value="'+zones[n]+'">'+zones[n]+'</option>');
-                sel.appendChild (option);
-              };
-
-            };
-          };
-          req.open("GET","zones", true);
-          req.send();
-        }
-    */
-
-    function removeChildren (node){
-        while (node.firstChild) node.removeChild (node.lastChild);
-    }
-
-
-    function submitZone (){
-        console.log ("submitZone()");
-
-        var zone = document.getElementById ("zones").value;
-        var req = new XMLHttpRequest();
-        req.open("GET", "pickZone?zone="+zone, true);
-        req.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                console.log (this.responseText);
-            };
-        };
-        req.send();
-    }
-
-
-    function refreshZones (){
-        var sel = document.getElementById("zones");
-        removeChildren (sel);
-        var zones = currentStatus.zones;
-        for (n=0;n<zones.length;n++){
-            var link = createElementFromHTML ('<div onclick="pickZone2('+n+')">'+zones[n]+'</div>');
-            sel.appendChild (link);
-        };
-    }
-
-
     var lastStatusText;
     var currentStatus;
     var artFlag = 0;
@@ -467,306 +345,331 @@
     var artTrack = "";
     var lastSDMounted = false;
 
-    function doStatus (){
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function(){
-            var n;
-            if(this.readyState == 4 && this.status == 200)
-            {
-                var statusText = this.responseText;
-                if (statusText != lastStatusText){
-                    console.log ("Status has changed "+statusText);
+    var mouseOverSlider = false;
+
+    var tracks;
+
+    var files;
+    var currentPath = "/sdcard";
+
+    function command(cmd) {
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {}
+        req.open("GET", cmd, true);
+        req.send();
+    }
+
+    function createElementFromHTML(string) {
+        let div = document.createElement('div');
+        div.innerHTML = string;
+        return div.firstChild;
+    }
+
+    function getSsids() {
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                let ssids = JSON.parse(this.responseText).names;
+                let sel = document.getElementById("ssids");
+                removeChildren(sel);
+                for (let n = 0; n < ssids.length; n++) {
+                    let option = createElementFromHTML('<option value="' + ssids[n] + '">' + ssids[n] + '</option>');
+                    sel.appendChild(option);
+                }
+            }
+        }
+        req.open("GET", "ssids", true);
+        req.send();
+    }
+
+    function removeChildren(node) {
+        while (node.firstChild) {
+            node.removeChild(node.lastChild);
+        }
+    }
+
+    function submitZone() {
+        let zone = document.getElementById("zones").value;
+        let req = new XMLHttpRequest();
+        req.open("GET", "pickZone?zone=" + zone, true);
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+            }
+        }
+        req.send();
+    }
+
+
+    function refreshZones() {
+        let sel = document.getElementById("zones");
+        removeChildren(sel);
+        let zones = currentStatus.zones;
+        for (let n = 0; n < zones.length; n++) {
+            let link = createElementFromHTML('<div onclick="pickZone2(' + n + ')">' + zones[n] + '</div>');
+            sel.appendChild(link);
+        }
+    }
+
+
+
+    function doStatus() {
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            let n;
+            if (this.readyState === 4 && this.status === 200) {
+                let statusText = this.responseText;
+                if (statusText !== lastStatusText) {
                     lastStatusText = statusText;
-                    var s = JSON.parse (statusText);
+                    let s = JSON.parse(statusText);
                     currentStatus = s;
-                    console.log (currentStatus.ip);
 
-                    if ((zones = s.zones)){
-                        console.log ("Got "+zones.length+" zones");
-                        var sel = document.getElementById("zones");
-                        removeChildren (sel);
-                        for (n=0;n<zones.length;n++){
-                            var option = createElementFromHTML ('<option value="'+zones[n]+'">'+zones[n]+'</option>');
-                            sel.appendChild (option);
-                        };
+                    if ((zones = s.zones)) {
+                        let sel = document.getElementById("zones");
+                        removeChildren(sel);
+                        for (let n = 0; n < zones.length; n++) {
+                            let option = createElementFromHTML('<option value="' + zones[n] + '">' + zones[n] + '</option>');
+                            sel.appendChild(option);
+                        }
                     }
 
-                    if (s.ssid){
-                        var sel = document.getElementById("network");
-
-                        var ip = s.ip?" "+s.ip:"";
-
-                        sel.innerHTML = "Current Network : "+s.ssid+ip;
+                    if (s.ssid) {
+                        let sel = document.getElementById("network");
+                        let ip = s.ip ? " " + s.ip : "";
+                        sel.innerHTML = "Current Network : " + s.ssid + ip;
                     }
 
-                    if (s.zone){
-                        var sel = document.getElementById("zone");
-
-                        var speed = s.snippetRate ? " "+s.snippetRate+"k" : "";
-                        sel.innerHTML = "Current Zone : "+s.zone+speed;
-
-                        document.getElementById ("zones").value = s.zone;
+                    if (s.zone) {
+                        let sel = document.getElementById("zone");
+                        let speed = s.snippetRate ? " " + s.snippetRate + "k" : "";
+                        sel.innerHTML = "Current Zone : " + s.zone + speed;
+                        document.getElementById("zones").value = s.zone;
                     }
 
-                    if (s.Volume){
-                        if (!mouseOverSlider) document.getElementById ("volumeSlider").value = s.Volume;
+                    if (s.Volume) {
+                        if (!mouseOverSlider) document.getElementById("volumeSlider").value = s.Volume;
                     }
 
-                    document.getElementById("version").innerHTML = "Version: "+s.version;
+                    document.getElementById("version").innerHTML = "Version: " + s.version;
 
-                    if (s.gain){
-                        document.getElementById ("gain").value = s.gain;
+                    if (s.gain) {
+                        document.getElementById("gain").value = s.gain;
                     }
 
-                    if (s.zone){
-                        document.getElementById("zone").innerHTML = '<span class="muted">Zone: </span>'+s.zone;
-                        refreshZones ();
+                    if (s.zone) {
+                        document.getElementById("zone").innerHTML = '<span class="muted">Zone: </span>' + s.zone;
+                        refreshZones();
                     }
-                    if (s.Source){
-                        document.getElementById("source").innerHTML = '<span class="muted">Source: </span>'+s.Source;
+                    if (s.Source) {
+                        document.getElementById("source").innerHTML = '<span class="muted">Source: </span>' + s.Source;
                     }
-                    if (s.Playing)
+                    if (s.Playing) {
                         document.getElementById("playing").innerHTML = "Playing"
-                    else
+                    } else {
                         document.getElementById("playing").innerHTML = "Paused"
+                    }
 
-                    if (s.Artist)
-                        document.getElementById("artist").innerHTML = '<span class="muted">Artist: </span>'+s.Artist;
-                    else
+                    if (s.Artist) {
+                        document.getElementById("artist").innerHTML = '<span class="muted">Artist: </span>' + s.Artist;
+                    } else {
                         document.getElementById("artist").innerHTML = "";
+                    }
 
-                    if (s.Album)
-                        document.getElementById("album").innerHTML = '<span class="muted">Album: </span>'+s.Album;
-                    else
+                    if (s.Album) {
+                        document.getElementById("album").innerHTML = '<span class="muted">Album: </span>' + s.Album;
+                    } else {
                         document.getElementById("album").innerHTML = "";
+                    }
 
-                    if (s.Track)
-                        document.getElementById("track").innerHTML = '<span class="muted">Track: </span>'+s.Track;
-                    else
+                    if (s.Track) {
+                        document.getElementById("track").innerHTML = '<span class="muted">Track: </span>' + s.Track;
+                    } else {
                         document.getElementById("track").innerHTML = "";
+                    }
 
-//		var art = s.artFlag && s.cdReady && s.Source == "CD";
+                    // var art = s.artFlag && s.cdReady && s.Source === "CD";
                     var art = s.artFlag;
 
-                    if ((art && !artFlag)||(artTrack != s.Track)){
-                        console.log ("new art");
-                        var sel = document.getElementById("artBox");
-                        removeChildren (sel);
-                        if (art){
-                            var img = createElementFromHTML ('<img src="'+s.artUrl+'" width="200" height="200">');
-                            sel.appendChild (img);
+                    if ((art && !artFlag) || (artTrack !== s.Track)) {
+                        let sel = document.getElementById("artBox");
+                        removeChildren(sel);
+                        if (art) {
+                            let img = createElementFromHTML('<img src="' + s.artUrl + '" width="200" height="200">');
+                            sel.appendChild(img);
                             artCount++;
                         }
                         artFlag = art;
                         artTrack = s.Track;
-                    }
-                    else if (!art && artFlag){
-                        console.log ("art gone");
-                        var sel = document.getElementById("artBox");
-                        removeChildren (sel);
+                    } else if (!art && artFlag) {
+                        let sel = document.getElementById("artBox");
+                        removeChildren(sel);
                         artFlag = false;
                         artTrack = s.Track;
                     }
 
-                    if (s.cdReady != lastCDReady){
-                        refreshTracks ();
+                    if (s.cdReady !== lastCDReady) {
+                        refreshTracks();
                         lastCDReady = s.cdReady;
                     }
 
-                    if (lastSDMounted != s.SDMounted){
+                    if (lastSDMounted !== s.SDMounted) {
                         if (!s.SDMounted) currentPath = "/sdcard";
                         refreshFiles();
                     }
                     lastSDMounted = s.SDMounted;
                 }
             }
-        };
+        }
         req.open("GET", "getStatus", true);
         req.send();
     }
 
-    var mouseOverSlider = false;
-
-    function doVolume (){
-//	console.log ("doVolume () "+this.value);
-        command ("setVolume?volume="+this.value);
+    function doVolume() {
+        command("setVolume?volume=" + this.value);
     }
 
-    document.addEventListener("DOMContentLoaded",function(event){
+    document.addEventListener("DOMContentLoaded", function (event) {
+        setInterval(doStatus, 1000);
 
-//  getGenericSettings ();
-
-        setInterval (doStatus,1000);
-
-        document.getElementById ("volumeSlider").addEventListener ("input",doVolume);
-        document.getElementById ("volumeSlider").addEventListener ("change", doVolume);
-        document.getElementById ("volumeSlider").addEventListener ("mouseenter", function (){
+        document.getElementById("volumeSlider").addEventListener("input", doVolume);
+        document.getElementById("volumeSlider").addEventListener("change", doVolume);
+        document.getElementById("volumeSlider").addEventListener("mouseenter", function () {
             mouseOverSlider = true;
         });
-        document.getElementById ("volumeSlider").addEventListener ("mouseleave", function (){
+        document.getElementById("volumeSlider").addEventListener("mouseleave", function () {
             mouseOverSlider = false;
         });
-
-
     });
 
-    function pickZone (){
-        console.log ("pickZone");
-
-        var zone = document.getElementById ("zones").value;
-        var req = new XMLHttpRequest();
-        req.open("GET", "pickZone?zone="+zone, true);
-        req.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                console.log (this.responseText);
-            };
-        };
+    function pickZone() {
+        let zone = document.getElementById("zones").value;
+        let req = new XMLHttpRequest();
+        req.open("GET", "pickZone?zone=" + zone, true);
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+            }
+        }
         req.send();
     }
 
-    function pickZone2 (n){
-
-        var zn = currentStatus.zones[n];
-        console.log ("pickZone2 "+zn);
+    function pickZone2(n) {
+        let zn = currentStatus.zones[n];
 
         document.getElementById("zones").style.display = "none";
 
-        var req = new XMLHttpRequest();
-        req.open("GET", "pickZone?zone="+zn, true);
-        req.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                console.log (this.responseText);
-            };
-        };
+        let req = new XMLHttpRequest();
+        req.open("GET", "pickZone?zone=" + zn, true);
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+            }
+        }
         req.send();
     }
 
-    function clickZone (event){
-        console.log ("clickZone");
+    function clickZone(event) {
         event.stopPropagation();
         document.getElementById("zones").style.display = "block";
     }
 
-    function zoneOut (){
-        console.log ("zoneOut");
+    function zoneOut() {
         document.getElementById("zones").style.display = "none";
     }
 
-    function togglePanel (panel,button){
+    function togglePanel(panel, button) {
         panel.classList.toggle("is_show");
 
-        if (panel.classList.contains("is_show")){
+        if (panel.classList.contains("is_show")) {
             button.classList.remove("triangle-down");
             button.classList.add("triangle-up");
-        }
-        else {
+        } else {
             button.classList.remove("triangle-up");
             button.classList.add("triangle-down");
         }
     }
 
 
-    function toggleVersion (){
-
-        var panel = document.getElementById ("versionPanel");
-        var button = document.getElementById ("versionButton");
-        togglePanel (panel,button);
+    function toggleVersion() {
+        let panel = document.getElementById("versionPanel");
+        let button = document.getElementById("versionButton");
+        togglePanel(panel, button);
     }
 
-    function toggleNetwork (){
-
-        var panel = document.getElementById ("networkPanel");
-        var button = document.getElementById ("networkButton");
-        togglePanel (panel,button);
+    function toggleNetwork() {
+        let panel = document.getElementById("networkPanel");
+        let button = document.getElementById("networkButton");
+        togglePanel(panel, button);
 
     }
 
-    function toggleZone (){
-
-        var panel = document.getElementById ("zonePanel");
-        var button = document.getElementById ("zoneButton");
-        togglePanel (panel,button);
-
+    function toggleZone() {
+        let panel = document.getElementById("zonePanel");
+        let button = document.getElementById("zoneButton");
+        togglePanel(panel, button);
     }
 
     var genericSettings;
 
-    function getGenericSettings (){
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                genericSettings = JSON.parse (this.responseText);
+    function getGenericSettings() {
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                genericSettings = JSON.parse(this.responseText);
 
-                var sel = document.getElementById("genericPanel");
-                removeChildren (sel);
-                var settings = Object.keys(genericSettings);
-                settings.forEach ((setting) => {
-                    console.log (genericSettings[setting].label + " " + genericSettings[setting].value);
-                    var s = genericSettings[setting];
+                let sel = document.getElementById("genericPanel");
+                removeChildren(sel);
+                let settings = Object.keys(genericSettings);
+                settings.forEach((setting) => {
+                    let s = genericSettings[setting];
 
-                    var it = '<div class="settingBox"><input type="number" name="' + setting + '" id="' + setting +
-                        '" min="'+s.min+'" max="'+s.max+'" step="'+s.step+'" value="'+s.value+'" onchange="setGenericSettings()">' +
-                        '<span class="title"> '+s.label+'</span></div>';
-                    var inp = createElementFromHTML (it);
-                    sel.appendChild (inp);
-
-
-
+                    let it = '<div class="settingBox"><input type="number" name="' + setting + '" id="' + setting +
+                        '" min="' + s.min + '" max="' + s.max + '" step="' + s.step + '" value="' + s.value + '" onchange="setGenericSettings()">' +
+                        '<span class="title"> ' + s.label + '</span></div>';
+                    let inp = createElementFromHTML(it);
+                    sel.appendChild(inp);
                 });
             }
-        };
+        }
         req.open("GET", "getGenericSettings", true);
         req.send();
     }
 
-    function setGenericSettings(){
-
-        console.log ("setGenericSettings()");
-
+    function setGenericSettings() {
         settings = Object.keys(genericSettings);
-        settings.forEach ((setting) => {
-            var v = parseInt (document.getElementById (setting).value);
-            console.log (setting + " " + v);
+        settings.forEach((setting) => {
+            let v = parseInt(document.getElementById(setting).value);
             genericSettings[setting].value = v;
         });
 
-        var j = JSON.stringify (genericSettings);
-        console.log (j);
+        let j = JSON.stringify(genericSettings);
 
-        var req = new XMLHttpRequest();
+        let req = new XMLHttpRequest();
         req.open("POST", "setGenericSettings", true);
-        req.onreadystatechange = function(){
-            if(this.readyState == 4 && this.status == 200){
-                console.log (this.responseText);
-            };
-        };
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+            }
+        }
         req.send(j);
 
     }
 
-    function selectPanel (tab){
-
-        if (tab == 0){
+    function selectPanel(tab) {
+        if (tab === 0) {
             document.getElementById("panel1").style.display = "block";
             document.getElementById("panel2").style.display = "none";
             document.getElementById("panel3").style.display = "none";
             document.getElementById("panel4").style.display = "none";
-        }
-        else if (tab == 1){
+        } else if (tab === 1) {
             document.getElementById("panel1").style.display = "none";
             document.getElementById("panel2").style.display = "block";
             document.getElementById("panel3").style.display = "none";
             document.getElementById("panel4").style.display = "none";
-            refreshTracks ();
-        }
-        else if (tab == 2){
+            refreshTracks();
+        } else if (tab === 2) {
             document.getElementById("panel1").style.display = "none";
             document.getElementById("panel2").style.display = "none";
             document.getElementById("panel3").style.display = "block";
             document.getElementById("panel4").style.display = "none";
-            refreshFiles ();
-        }
-        else if (tab == 3){
+            refreshFiles();
+        } else if (tab === 3) {
             document.getElementById("panel1").style.display = "none";
             document.getElementById("panel2").style.display = "none";
             document.getElementById("panel3").style.display = "none";
@@ -774,100 +677,92 @@
         }
     }
 
-    var tracks;
 
-    function playTrack (n){
-        command ("playTrack?track="+n);
+
+    function playTrack(n) {
+        command("playTrack?track=" + n);
     }
 
     function refreshTracks() {
-
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200){
-                tracks = JSON.parse (this.responseText);
-                displayTracks ();
-            };
-        };
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                tracks = JSON.parse(this.responseText);
+                displayTracks();
+            }
+        }
         req.open("GET", "getTracks", true);
         req.send();
     }
 
-    function displayTracks (){
-
-        var sel = document.getElementById("tracks");
-        removeChildren (sel);
-        for (n=0;n<tracks.length;n++){
-            var row = document.createElement ('tr');
-            row.innerHTML = '<td><span class="smallButton" onclick="playTrack ('+n+')">&#x25B6;</span></td>'+
-                '<td>'+tracks[n]+'</td>';
-            sel.appendChild (row);
+    function displayTracks() {
+        let sel = document.getElementById("tracks");
+        removeChildren(sel);
+        for (let n = 0; n < tracks.length; n++) {
+            let row = document.createElement('tr');
+            row.innerHTML = '<td><span class="smallButton" onclick="playTrack (' + n + ')">&#x25B6;</span></td>' +
+                '<td>' + tracks[n] + '</td>';
+            sel.appendChild(row);
         }
     }
 
-    var files;
-    var currentPath = "/sdcard";
 
 
-    function playFile (n){
-        command ("playFile?path="+currentPath+"/"+files[n].name);
+
+    function playFile(n) {
+        command("playFile?path=" + currentPath + "/" + files[n].name);
     }
 
     function refreshFiles() {
-
         document.getElementById("path").innerHTML = currentPath;
 
-        var req = new XMLHttpRequest();
-        req.onreadystatechange = function() {
-            if(this.readyState == 4 && this.status == 200){
-                files = JSON.parse (this.responseText);
-                displayFiles ();
-            };
-        };
-        req.open("GET", "getFiles?path="+currentPath, true);
+        let req = new XMLHttpRequest();
+        req.onreadystatechange = function () {
+            if (this.readyState === 4 && this.status === 200) {
+                files = JSON.parse(this.responseText);
+                displayFiles();
+            }
+        }
+        req.open("GET", "getFiles?path=" + currentPath, true);
         req.send();
     }
 
-    function drillDown (n){
+    function drillDown(n) {
 
-        if (currentPath.slice(-1) == "/")
-            currentPath += files[n].name
-        else
-            currentPath += "/"+files[n].name
-
-        refreshFiles ();
+        if (currentPath.slice(-1) === "/") {
+            currentPath += files[n].name;
+        } else {
+            currentPath += "/" + files[n].name;
+        }
+        refreshFiles();
     }
 
-    function drillUp (){
+    function drillUp() {
+        if (currentPath === "/sdcard") {
+            return;
+        }
 
-        if (currentPath == "/sdcard") return;
+        let n = currentPath.lastIndexOf("/");
+        currentPath = currentPath.slice(0, n);
 
-
-        var n = currentPath.lastIndexOf ("/");
-        currentPath = currentPath.slice (0,n);
-
-        refreshFiles ();
+        refreshFiles();
     }
 
-    function displayFiles (){
-
-        var sel = document.getElementById("files");
-        removeChildren (sel);
-        for (n=0;n<files.length;n++){
-            var row = document.createElement ('tr');
-            if (files[n].type == 2){
-                row.innerHTML = '<td><span class="smallButton" onclick="playFile ('+n+')">&#x25B6;</span></td>'+
-                    '<td class="folder" onclick="drillDown ('+n+')">'+files[n].name+'</td>';
+    function displayFiles() {
+        let sel = document.getElementById("files");
+        removeChildren(sel);
+        for (let n = 0; n < files.length; n++) {
+            let row = document.createElement('tr');
+            if (files[n].type === 2) {
+                row.innerHTML = '<td><span class="smallButton" onclick="playFile (' + n + ')">&#x25B6;</span></td>' +
+                    '<td class="folder" onclick="drillDown (' + n + ')">' + files[n].name + '</td>';
+            } else {
+                row.innerHTML = '<td><span class="smallButton" onclick="playFile (' + n + ')">&#x25B6;</span></td>' +
+                    '<td>' + files[n].name + '</td>';
             }
-            else {
-                row.innerHTML = '<td><span class="smallButton" onclick="playFile ('+n+')">&#x25B6;</span></td>'+
-                    '<td>'+files[n].name+'</td>';
-            }
-            sel.appendChild (row);
+            sel.appendChild(row);
         }
     }
-
-
 </script>
 </body>
 </html>
